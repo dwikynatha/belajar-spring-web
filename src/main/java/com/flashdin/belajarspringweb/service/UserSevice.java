@@ -8,4 +8,6 @@ public interface UserSevice extends BaseService<User> {
 
     List<User> findByUsername(User param);
 
+    User findByUsernameAndPassword(String username, String password);
+
 }

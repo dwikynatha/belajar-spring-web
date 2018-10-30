@@ -44,4 +44,14 @@ public class UserServiceImpl implements UserSevice {
     public List<User> findByUsername(User param) {
         return userDAO.findByUsername(param);
     }
+
+    @Override
+    public User findByUsernameAndPassword(String username, String password) {
+        User login = userDAO.findByUsernameAndPassword(username, password);
+        if (login != null) {
+            return login;
+        }
+
+        return null;
+    }
 }

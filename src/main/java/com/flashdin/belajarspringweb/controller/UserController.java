@@ -27,6 +27,16 @@ public class UserController {
         return "/user/update";
     }
 
+    @PostMapping(value = "/do-login")
+    public String doLogin(String username, String password) {
+        User currentLogin = userService.findByUsernameAndPassword(username, password);
+        if (currentLogin == null) {
+            return "redirect:/user/create?failed";
+        } else {
+            return "redirect:/user/create?success";
+        }
+    }
+
     @PostMapping(value = "/create")
     public String save(User param) {
         User data = userService.save(param);
